@@ -13,8 +13,10 @@
 
 	var eventHandlers = {
 		change: function(){
+			var form = document.querySelector('form');
 			var select = document.querySelector('select');
-			select.addEventListener("change", function(e){
+			form.addEventListener("submit", function(e){
+				e.preventDefault();
 				var selectValue = select.value;
 				var year = (new Date()).getFullYear() - (Number(selectValue) + 5);
 				getCurrentLocation.init(year);
@@ -114,7 +116,8 @@
       PREFIX sem: <http://semanticweb.cs.vu.nl/2009/11/sem/>
       PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
       PREFIX dc: <http://purl.org/dc/elements/1.1/>
-      SELECT ?title ?img ?start ?end ?street ?streetLabel WHERE {
+      # SELECT ?title ?img ?start ?end ?street ?streetLabel WHERE {
+			SELECT DISTINCT(?img) ?title ?start ?street ?streetLabel ?end WHERE {
         # basic data
         ?cho dc:title ?title .
         ?cho foaf:depiction ?img .
@@ -143,25 +146,38 @@
 			var encodedquery = encodeURIComponent(sparqlquery);
 			//https://api.data.adamlink.nl/datasets/AdamNet/all/services/hva2018/sparql
 			//https://api.data.adamlink.nl/datasets/AdamNet/all/services/endpoint/sparql
-			var queryurl = 'https://api.data.adamlink.nl/datasets/AdamNet/all/services/hva2018/sparql?default-graph-uri=&query=' + encodedquery + '&format=application%2Fsparql-results%2Bjson&timeout=0&debug=on';
+			var queryurl = 'https://api.data.adamlink.nl/datasets/AdamNet/Heritage/services/ijsbreker/sparql?default-graph-uri=&query=' + encodedquery + '&format=application%2Fsparql-results%2Bjson&timeout=0&debug=on';
+
+			loader.show()
 
 			fetch(queryurl)
 			.then((resp) => resp.json()) // transform the data into json
 				.then(function(data) {
+					var rows = data.results.bindings; // get the results
+					console.log(rows)
+					template.renderImages(rows)
 
-				var rows = data.results.bindings; // get the results
-				console.log(rows)
-				template.renderImages(rows)
-
-			}).catch(function(error) {
-				// if there is any error you will catch them here
-				console.log(error);
+				}).catch(function(error) {
+					// if there is any error you will catch them here
+					console.log(error);
 			});
+		}
+	}
+
+	var loader = {
+		show: function() {
+			document.querySelector('main').classList.add('loader');
+			var header = document.querySelector('header');
+			header.style.display = "none";
+		},
+		hide: function() {
+			document.querySelector('main').classList.remove('loader')
 		}
 	}
 
 	var template = {
 		renderImages: function(data){
+			console.log('loader stop');
 			var target = document.querySelector(".answer");
 			var directives = {
 				year: {
@@ -176,27 +192,26 @@
 				},
 			  img: {
 			    src: function(params) {
-						return this.img.value
+						var srcold = this.img.value;
+						var srcnew = srcold.replace("http", "https")
+						return srcnew
 			    }
 			  }
 			}
-			this.hide();
 			Transparency.render(target, data, directives)
 			function sliderInit(){
 					$('.answer').slick({
-							autoplay: true,
-							autoplaySpeed: 3000,
-							variableWidth: true,
-							slidesToShow: 3,
-						 	slidesToScroll: 1
-					});
+						variableWidth: true,
+						autoplay: true,
+						autoplaySpeed: 5000,
+						slidesToShow: 1,
+						centerMode: true,
+						pauseOnHover: false,
+						lazyLoad: 'progressive'
+				});
 			};
 			sliderInit();
-		},
-		hide: function(){
-
-			var header = document.querySelector('header');
-			header.style.display = "none";
+			loader.hide()
 		}
 	}
 

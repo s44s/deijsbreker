@@ -7,6 +7,7 @@
 body {
   margin: 0;
 	overflow: hidden;
+	overflow-y: hidden;
 }
 
 .overlay::after {
@@ -46,19 +47,12 @@ body {
 
 body .logo-tv {
 	position: fixed;
-	right: 50px;
-	top: 50px;
-	width: 110px;
+	right: 5vw;
+	top: 5vh;
+	width: 10vw;
 	z-index: 10;
 }
 
-h1 {
-
-}
-
-h2 {
-
-}
 
 /*
 ====================
@@ -71,30 +65,43 @@ header, main {
 }
 
 header {
-	width: 80vw;
-	height: 40vh;
-	margin-top: 50vh;
-	margin-left: 10vw;
+	width: 70vw;
+	margin-left: 15vw;
 }
 
 header h1 {
+	margin-top: 45vh;
 	color: white;
-	font-family: 'Inconsolata';
-	font-size: 5em;
+	font-family: helvetica;
+	font-size: 3.5em;
 	text-align: right;
 }
 
 header form {
 	text-align: right;
-	margin-top: 5%;
 }
 
 header form select {
 	font-size: 2em;
+	font-family: helvetica;
 }
 
 header form select option {
 		padding: 20%;
+}
+
+header form button {
+	background-color: black;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-family: helvetica;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
 }
 
 /*
@@ -102,27 +109,60 @@ header form select option {
   Answerpage
 ====================
 */
+
+.loader {
+	z-index: 10000;
+	padding: 0;
+	margin: 0;
+	width: 100vw;
+	height: 100vh;
+  background: url('../images/loadertv.gif') no-repeat 150% 100%;
+	background-size: cover;
+}
+
 main {
-	height: 70vh;
 	width: 80vw;
 	margin-left: 10vw;
-	margin-top: 25vh;
+}
+
+main .slick-list {
+	margin-top: 16vh;
 }
 
 main .slick-slide {
   margin: 0 10px;
+	opacity: 0.5;
+}
+
+main .slick-slide img {
+	height: 60vh;
+}
+
+main .slick-current {
+	opacity: 1;
 }
 
 main .slick-arrow {
 	display: none !important;
 }
-main .year {
-	font-family: 'Inconsolata';
-	font-weight: italic;
-	color: white;
+
+.imagecaption {
+  float: left;
 }
 
-main .description {
+figure {
+  display: table;
+  margin: 0px;
+}
+
+figure img {
+  display: block;
+}
+
+figcaption {
+	margin-top: 2%;
+  display: table-caption;
+  caption-side: bottom;
 	font-family: 'Inconsolata';
 	color: white;
 }

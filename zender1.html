@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>De ijsbreker</title>
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <link rel="stylesheet" href="styles/styles.css">
+	<link rel="manifest" href="manifest.json">
+</head>
+<body class="scanlines">
+	<div class="overlay">
+		<img class="logo-tv" src=images/logo-wonentv.png alt="logo-tv"/>
+		<header class="question">
+			<h1>Hoe lang woont u al op het huidige adres?</h1>
+			<form name="selectForm">
+				<select>
+					<option value=5>minder dan 10 jaar</option>
+					<option value=10>Tussen de 10 en 15 jaar</option>
+					<option value=15>Tussen de 15 en 20 jaar</option>
+					<option value=20>Tussen de 20 en 25 jaar</option>
+					<option value=25>Meer dan 30 jaar</option>
+				</select>
+				<button type="submit">Toon foto's</button>
+			</form>
+		</header>
+		<main class="answer">
+			<div class="imagecaption">
+			<figure>
+		    <img class="img" src=""/>
+		    <figcaption class="year"></figcaption>
+				<figcaption class="description"></figcaption>
+			</figure>
+			</div>
+			<!-- <div class="item-container">
+				<img class="img" src="" alt=""/>
+				<p class="year"></p>
+				<p class="description"></p>
+			</div> -->
+		</main>
+	</div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="scripts/lib/transparency.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="scripts/app.js"></script>
+<script src="scripts/makeymakey.js"></script>
+
+
+</body>
+</html>
