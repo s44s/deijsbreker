@@ -77,6 +77,10 @@ header h1 {
 	text-align: right;
 }
 
+body form:first-child {
+	display: none;
+}
+
 header form {
 	text-align: right;
 }

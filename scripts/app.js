@@ -8,12 +8,9 @@
 		}
 	}
 
-	var getSelectInput = {
-	}
-
 	var eventHandlers = {
 		change: function(){
-			var form = document.querySelector('form');
+			var form = document.querySelector('header form');
 			var select = document.querySelector('select');
 			form.addEventListener("submit", function(e){
 				e.preventDefault();
