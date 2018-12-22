@@ -6,6 +6,10 @@ body {
   width: 100vw;
 }
 
+body form:first-child {
+	display: none;
+}
+
 @font-face {
   src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/86186/terminal_copy.ttf);
   font-family: 'Inconsolata';

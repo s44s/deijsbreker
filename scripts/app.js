@@ -11,26 +11,34 @@
 	var eventHandlers = {
 		change: function(){
 			var form = document.querySelector('header form');
-			var select = document.querySelector('select');
 			form.addEventListener("submit", function(e){
 				e.preventDefault();
-				var selectValue = select.value;
-				var year = (new Date()).getFullYear() - (Number(selectValue) + 5);
-				getCurrentLocation.init(year);
-				// getDataAnswer.input(year);
+				var radios = form.elements;
+				var val;
+				for(var i=0, len=radios.length; i<len; i++) {
+					if(radios[i].checked) { // radio checked?
+						val = radios[i].value; // if so, hold its value in val
+						break; // and break out of for loop
+					}
+				}
+
+				var selectValue = val
+				console.log(val)
+				getParameters.init(val);
 			});
 		}
 	}
 
-	var getCurrentLocation = {
-		init: function(year){
+	var getParameters = {
+		init: function(selectValue){
+			var year = (new Date()).getFullYear() - (Number(selectValue) + 5);
 			this.getLatLong(year);
 		},
 		getLatLong: function(year){
 			if (navigator.geolocation) {
 				navigator.geolocation.getCurrentPosition(showPosition);
 			} else {
-				x.innerHTML = "Geolocation is not supported by this browser.";
+				console.log("Geolocation is not supported by this browser.");
 			}
 
 			function showPosition(position) {
@@ -41,7 +49,7 @@
 				var coords = [lat, long];
 				var radius = 500;
 				var numberOfEdges = 4;
-				getCurrentLocation.toPolygon(coords, radius, numberOfEdges, year);
+				getParameters.toPolygon(coords, radius, numberOfEdges, year);
 			}
 		},
 		toPolygon: function(coords, radius, numberOfEdges, year){
@@ -138,6 +146,8 @@
         FILTER(bif:GeometryType(?y)!='POLYGON' && bif:st_intersects(?x, ?y))
       }
       ORDER BY ?start
+			LIMIT 100
+
 			`;
 
 			var encodedquery = encodeURIComponent(sparqlquery);
@@ -195,20 +205,36 @@
 			    }
 			  }
 			}
-			Transparency.render(target, data, directives)
+			Transparency.render(target, data, directives);
+
+			var images = document.querySelectorAll('.img');
+			images.forEach(function(e){
+				e.addEventListener('error', function(){
+					e.src = 'images/error.png';
+				})
+			})
+
 			function sliderInit(){
 					$('.answer').slick({
 						variableWidth: true,
 						autoplay: true,
-						autoplaySpeed: 5000,
+						autoplaySpeed: 100,
 						slidesToShow: 1,
 						centerMode: true,
 						pauseOnHover: false,
 						lazyLoad: 'progressive'
 				});
 			};
+
+			function timeOut(){
+				setTimeout(function(){
+					$('.answer').slick('slickSetOption', 'autoplaySpeed', '5000');
+				}, 100);
+			}
+
 			sliderInit();
-			loader.hide()
+			timeOut();
+			loader.hide();
 		}
 	}
 
