@@ -81,12 +81,18 @@ header h1 {
 header p {
 	margin: 0;
 	padding: 0;
-	color: rgba(255,255,255,0.8);
+	color: red;
 	font-family: helvetica;
 	font-size: 1.5em;
 	text-align: left;
 	width: 50%;
 	margin-bottom: 2%;
+	margin-top: 10vh;
+}
+
+header span {
+	color: rgba(255,255,255,0.8);
+	color: red;
 }
 
 header .arrow-up {

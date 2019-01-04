@@ -144,12 +144,13 @@ function keymesg(w,e){
 				//scroll down indicator
 				var focus = document.querySelector('input:checked');
 				var feedback = document.querySelector('p');
+				var span = document.querySelector('span');
 				var child = focus.parentNode;
 				var parent = child.parentNode;
 				var total = parent.children.length;
 				var index = Array.prototype.indexOf.call(parent.children, child);
 				var allRadio = document.querySelectorAll('input')
-				feedback.innerHTML = index + 1 + '/' + total
+				feedback.innerHTML = index + 1 + '<span>/' + total + '</span>';
 
 				//focus color
 				allRadio.forEach(function(e){
@@ -161,6 +162,7 @@ function keymesg(w,e){
 				if (div.scrollHeight > div.offsetHeight) {
 					if(focus.offsetTop + focus.offsetHeight > div.offsetHeight){
 						focus.scrollIntoView();
+						// console.log(div.scrollHeight, div.offsetHeight);
 					} else {
 						focus.scrollIntoView(false);
 					}
