@@ -618,3 +618,51 @@ body form:first-child {
             transform: skew(0, 0);
   }
 }
+
+
+/* zerostate */
+video {
+	opacity: 0.5;
+	width: 100vw;
+	position: absolute;
+	transition: opacity 1.5s ease-in-out;
+}
+
+.fade-in {
+	opacity: 1;
+}
+
+.container-overview {
+	position: absolute;
+	z-index: 100;
+	width: 100vw;
+	height: 100vh;
+	background-color: black;
+	opacity: 0;
+	transition: opacity 1.5s ease-in-out;
+}
+
+.fade-out {
+	opacity: 0.8;
+}
+
+.overview {
+	position: absolute;
+	z-index: 1000;
+	width: 70vw;
+	height: 70vh;
+	margin-left: 15vw;
+	margin-top: 15vh;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.video-playing {
+	display: none;
+}
+
+.overview img {
+	width: 15vw;
+}

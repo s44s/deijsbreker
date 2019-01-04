@@ -9,11 +9,11 @@
   <link rel="stylesheet" href="styles/start.css">
 	<link rel="manifest" href="manifest.json">
 </head>
-<body>
-	<form name="testform">
-		<textarea name="t" rows="25" cols="90"></textarea>
-	</form>
-	<a href="zender3.html"><main class="scanlines">
+<body class="index">
+	<main class="scanlines">
+		<form name="testform">
+			<textarea name="t" rows="25" cols="90"></textarea>
+		</form>
 		<div class="screen">
 				<canvas id="canvas" class="picture"></canvas>
 				<div class="overlay">
@@ -28,7 +28,24 @@
 						</div>
 				</div>
 		</div>
-	</main></a>
+	</main>
+	<div class="overlay">
+		<video>
+			<source src="images/tvomroep.mp4" type="video/mp4">
+		</video>
+		<div class="container-overview">
+			<section class="overview">
+				<a href="zender3.html"><img src="images/logo's/zwembad.png"/></a>
+				<a href="zender4.html"><img src="images/logo's/zwembad.png"/></a>
+				<a href="zender5.html"><img src="images/logo's/zwembad.png"/></a>
+				<a href="zender6.html"><img src="images/logo's/zwembad.png"/></a>
+				<a href="zender7.html"><img src="images/logo's/zwembad.png"/></a>
+				<a href="zender1.html"><img src="images/logo's/wonen.png"/></a>
+				<a href="zender2.html"><img src="images/logo's/ov.png"/></a>
+			</section>
+		</div>
+	</div>
+	<script src="scripts/zerostate.js"></script>
 	<script src="scripts/makeymakey.js"></script>
 	<script src="scripts/start.js"></script>
 </body>

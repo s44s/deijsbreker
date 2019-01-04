@@ -148,13 +148,20 @@ function keymesg(w,e){
  		}
 		if(keyval(e.keyCode).substr(0,2) == 0){ //pijl omlaag/omhoog/opzij/naarboven
 			if(window.location.href.substr(window.location.href.length - 10) == 'index.html' || window.location.href.substr(window.location.href.length - 1) == '/'){
-				var currenturl = window.location.href;
-				var currentHTMLPage = currenturl.substr(currenturl.length - 10);
-				var splitPath = window.location.pathname.split("index")[0];
-				var newPath = splitPath + 'zender3.html';
-				console.log(newPath)
-				window.location.href = newPath
-			}else {
+				// var currenturl = window.location.href;
+				// var currentHTMLPage = currenturl.substr(currenturl.length - 10);
+				// var splitPath = window.location.pathname.split("index")[0];
+				// var newPath = splitPath + 'zender3.html';
+				// console.log(newPath)
+				// window.location.href = newPath
+				var main = document.querySelector('main');
+				var video = document.querySelector('video');
+				main.style.display = "none";
+				video.classList.add('fade-in');
+				video.autoplay = true;
+				video.play();
+
+			} else {
 				var form = document.querySelector('header form');
 				var radios = form.elements;
 				var selected = document.querySelectorAll('input[type="radio"]:checked');
