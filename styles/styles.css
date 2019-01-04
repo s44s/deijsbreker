@@ -121,6 +121,7 @@ header form div.first {
 	overflow: scroll;
 }
 
+
 header form input {
 	opacity: 0;
 }
@@ -179,6 +180,10 @@ header form button {
 main {
 	width: 80vw;
 	margin-left: 10vw;
+}
+
+main .imagecaption {
+	display: none;
 }
 
 main .slick-list {
