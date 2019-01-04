@@ -96,71 +96,129 @@ function keymesg(w,e){
 			$(".answer").slick('slickNext')
 		}
 		if(keyval(e.keyCode).substr(0,2) == 70){ //f
-			var form = document.querySelector('header form');
-			var radios = form.elements;
-			var selected = document.querySelectorAll('input[type="radio"]:checked');
-			var div = document.querySelector('.first')
-			for(var i=0, len=radios.length; i<len; i++) {
-				if(selected[0].value == radios[i].value) {
-					if(i > radios.length - 3){
-						radios[i].checked = false;
-						document.querySelector('input[name="radio1"]').checked = true;
-					} else {
-						var numberOld = i + 1;
-						var numberNew = i + 2;
-						radios[i].checked = false;
-						document.querySelector('input[name="radio' + numberNew + '"]').checked = true;
-						break; // and break out of for loop
+			if(window.location.href.substr(window.location.href.length - 10) == 'index.html' || window.location.href.substr(window.location.href.length - 1) == '/'){
+				var form = document.querySelector('.overlay form');
+				var radios = form.elements;
+				var selected = document.querySelectorAll('input[type="radio"]:checked');
+				for(var i=0, len=radios.length; i<len; i++) {
+					if(selected[0].value == radios[i].value) {
+						if(i + 2 > radios.length){
+							radios[i].checked = false;
+							document.querySelector('input[name="radio1"]').checked = true;
+						} else {
+							var numberOld = i + 1;
+							var numberNew = i + 2;
+							radios[i].checked = false;
+							document.querySelector('input[name="radio' + numberNew + '"]').checked = true;
+							break; // and break out of for loop
+						}
 					}
 				}
+				var focus = document.querySelector('input:checked');
+				var allRadio = document.querySelectorAll('input')
+				allRadio.forEach(function(e){
+					e.parentNode.children[1].style.opacity = 0.5
+				})
+				focus.parentNode.children[1].style.opacity = 1;
+
 			}
-			//scroll down indicator
-			var focus = document.querySelector('input:checked');
-			var feedback = document.querySelector('p');
-			var child = focus.parentNode;
-			var parent = child.parentNode;
-			var total = parent.children.length;
-			var index = Array.prototype.indexOf.call(parent.children, child);
-			var allRadio = document.querySelectorAll('input')
-			feedback.innerHTML = index + 1 + '/' + total
-
-			//focus color
-			allRadio.forEach(function(e){
-				e.parentNode.style.backgroundColor = 'grey';
-			})
-			focus.parentNode.style.backgroundColor = 'red'
-
-			//scroll down
-			if (div.scrollHeight > div.offsetHeight) {
-				if(focus.offsetTop + focus.offsetHeight > div.offsetHeight){
-					focus.scrollIntoView();
-				} else {
-					focus.scrollIntoView(false);
+			else {
+				var form = document.querySelector('header form');
+				var radios = form.elements;
+				var selected = document.querySelectorAll('input[type="radio"]:checked');
+				var div = document.querySelector('.first')
+				for(var i=0, len=radios.length; i<len; i++) {
+					if(selected[0].value == radios[i].value) {
+						if(i > radios.length - 3){
+							radios[i].checked = false;
+							document.querySelector('input[name="radio1"]').checked = true;
+						} else {
+							var numberOld = i + 1;
+							var numberNew = i + 2;
+							radios[i].checked = false;
+							document.querySelector('input[name="radio' + numberNew + '"]').checked = true;
+							break; // and break out of for loop
+						}
+					}
 				}
+				//scroll down indicator
+				var focus = document.querySelector('input:checked');
+				var feedback = document.querySelector('p');
+				var child = focus.parentNode;
+				var parent = child.parentNode;
+				var total = parent.children.length;
+				var index = Array.prototype.indexOf.call(parent.children, child);
+				var allRadio = document.querySelectorAll('input')
+				feedback.innerHTML = index + 1 + '/' + total
+
+				//focus color
+				allRadio.forEach(function(e){
+					e.parentNode.style.backgroundColor = 'grey';
+				})
+				focus.parentNode.style.backgroundColor = 'red'
+
+				//scroll down
+				if (div.scrollHeight > div.offsetHeight) {
+					if(focus.offsetTop + focus.offsetHeight > div.offsetHeight){
+						focus.scrollIntoView();
+					} else {
+						focus.scrollIntoView(false);
+					}
+				}
+
 			}
 		}
 		if(keyval(e.keyCode).substr(0,2) == 71){ //g
 			var autoplay = document.querySelector('.slick-slider')
 			if(autoplay == null){
-				var submit = document.querySelector('button[type="submit"]');
-				submit.click();
+				if(window.location.href.substr(window.location.href.length - 10) == 'index.html' || window.location.href.substr(window.location.href.length - 1) == '/'){
+					var selected = document.querySelectorAll('input[type="radio"]:checked');
+					var value = selected[0].value;
+					var splitPath = window.location.pathname.split("index")[0];
+					var newPath = splitPath + value;
+					window.location.href = newPath;
+				} else{
+					var submit = document.querySelector('button[type="submit"]');
+					submit.click();
+				}
 			}
  		}
 		if(keyval(e.keyCode).substr(0,2) == 0){ //pijl omlaag/omhoog/opzij/naarboven
 			if(window.location.href.substr(window.location.href.length - 10) == 'index.html' || window.location.href.substr(window.location.href.length - 1) == '/'){
-				// var currenturl = window.location.href;
-				// var currentHTMLPage = currenturl.substr(currenturl.length - 10);
-				// var splitPath = window.location.pathname.split("index")[0];
-				// var newPath = splitPath + 'zender3.html';
-				// console.log(newPath)
-				// window.location.href = newPath
 				var main = document.querySelector('main');
-				var video = document.querySelector('video');
-				main.style.display = "none";
-				video.classList.add('fade-in');
-				video.autoplay = true;
-				video.play();
+				if(main.style.display === "none"){
 
+					var form = document.querySelector('.overlay form');
+					var radios = form.elements;
+					var selected = document.querySelectorAll('input[type="radio"]:checked');
+					for(var i=0, len=radios.length; i<len; i++) {
+						if(selected[0].value == radios[i].value) {
+							if(i == 0){
+								radios[i].checked = false;
+								document.querySelector('input[name="radio' + (radios.length).toString() + '"]').checked = true;
+							} else {
+								var numberOld = i + 1;
+								var numberNew = numberOld - 1;
+								radios[i].checked = false;
+								document.querySelector('input[name="radio' + numberNew + '"]').checked = true;
+								break; // and break out of for loop
+							}
+						}
+					}
+					var focus = document.querySelector('input:checked');
+					var allRadio = document.querySelectorAll('input')
+					allRadio.forEach(function(e){
+						e.parentNode.children[1].style.opacity = 0.5
+					})
+					focus.parentNode.children[1].style.opacity = 1;
+
+				} else {
+					var video = document.querySelector('video');
+					main.style.display = "none";
+					video.classList.add('fade-in');
+					video.autoplay = true;
+					video.play();
+				}
 			} else {
 				var form = document.querySelector('header form');
 				var radios = form.elements;

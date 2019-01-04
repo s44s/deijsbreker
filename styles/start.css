@@ -6,7 +6,7 @@ body {
   width: 100vw;
 }
 
-body form:first-child {
+body form[name="testform"]{
 	display: none;
 }
 
@@ -659,10 +659,19 @@ video {
 	align-items: center;
 }
 
+.overlay input {
+  opacity: 0;
+}
+
 .video-playing {
 	display: none;
 }
 
+.overview input:checked + img {
+	opacity: 1;
+}
+
 .overview img {
+	opacity: 0.5;
 	width: 15vw;
 }
