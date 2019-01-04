@@ -50,9 +50,13 @@ function keymesg(w,e){
 			if (autoplay == true){
 				$('.answer').slick('slickSetOption', 'autoplay', 'false');
 				$('.answer').slick('slickPause');
+				document.querySelector('.remote').classList.add('pause');
+				document.querySelector('.remote').classList.remove('play');
 			} else {
 				$('.answer').slick('slickSetOption', 'autoplay', 'true');
 				$('.answer').slick('slickPlay');
+				document.querySelector('.remote').classList.add('play');
+				document.querySelector('.remote').classList.remove('pause');
 			}
 		}
 		if(keyval(e.keyCode).substr(0,2) == 87){ //w

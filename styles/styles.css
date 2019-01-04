@@ -199,10 +199,12 @@ main .slick-list {
 main .slick-slide {
   margin: 0 10px;
 	opacity: 0.5;
+  max-height: 75vh;
 }
 
 main .slick-slide img {
-	height: 60vh;
+	height: 55vh;
+  max-width: 60vw;
 }
 
 main .slick-current {
@@ -217,6 +219,41 @@ main .slick-arrow {
   float: left;
 }
 
+.remote {
+	position: absolute;
+	width: 10vw;
+	height: 10vw;
+	top: 20vw;
+	left: 46vw;
+	z-index: 1000;
+	/* transition: opacity 0.5s ease-in-out; */
+}
+
+.pause {
+	background-image: url('../images/pause.png');
+	background-repeat: no-repeat;
+	background-size: 80%;
+	animation: fade-out 1s forwards;
+}
+
+.play {
+	opacity: 1;
+	background-image: url('../images/play-button.png');
+	background-repeat: no-repeat;
+	background-size: 80%;
+	animation: fade-out-play 1s forwards;
+}
+
+@keyframes fade-out {
+  from {opacity: 1;}
+  to {opacity: 0;}
+}
+
+@keyframes fade-out-play {
+  from {opacity: 1;}
+  to {opacity: 0;}
+}
+
 figure {
   display: table;
   margin: 0px;
@@ -226,10 +263,17 @@ figure img {
   display: block;
 }
 
+figcaption:first-of-type {
+	text-align: right;
+	font-size: 90%;
+}
+
 figcaption {
-	margin-top: 2%;
+	background-color: white;
   display: table-caption;
   caption-side: bottom;
-	font-family: 'Inconsolata';
-	color: white;
+	font-family: calibri;
+	color: black;
+	font-size: 150%;
+	padding: 1% 3% 3% 3%;
 }
