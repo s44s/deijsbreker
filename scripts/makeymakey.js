@@ -60,37 +60,45 @@ function keymesg(w,e){
 			}
 		}
 		if(keyval(e.keyCode).substr(0,2) == 87){ //w
-			var currenturl = window.location.href;
-			var currentHTMLPage = currenturl.substr(currenturl.length - 6);
-			var number = Number(currentHTMLPage.substr(0,1));
-			var nextNumber = number + 1;
-			if (nextNumber < 8){
-				var splitPath = window.location.pathname.split("zender")[0];
-				var newPath = splitPath + 'zender' + nextNumber.toString() + '.html'
-				var newURL = window.location.hostname + window.location.pathname;
-				window.location.href = newPath
-				console.log(newPath)
-			} else {
-				var splitPath = window.location.pathname.split("zender")[0];
-				var newPath = splitPath + 'zender1.html';
-				window.location.href = newPath
+			if(window.location.href.substr(window.location.href.length - 10) == 'index.html' || window.location.href.substr(window.location.href.length - 1) == '/'){
 			}
+			else {
+				var currenturl = window.location.href;
+				var currentHTMLPage = currenturl.substr(currenturl.length - 6);
+				var number = Number(currentHTMLPage.substr(0,1));
+				var nextNumber = number + 1;
+				if (nextNumber < 8){
+					var splitPath = window.location.pathname.split("zender")[0];
+					var newPath = splitPath + 'zender' + nextNumber.toString() + '.html'
+					var newURL = window.location.hostname + window.location.pathname;
+					window.location.href = newPath
+					console.log(newPath)
+				} else {
+					var splitPath = window.location.pathname.split("zender")[0];
+					var newPath = splitPath + 'zender1.html';
+					window.location.href = newPath
+				}
+		}
 		}
 		if(keyval(e.keyCode).substr(0,2) == 65){ //a
-			var currenturl = window.location.href;
-			var currentHTMLPage = currenturl.substr(currenturl.length - 6);
-			var number = Number(currentHTMLPage.substr(0,1));
-			var nextNumber = number - 1;
-			if (nextNumber > 0){
-				var splitPath = window.location.pathname.split("zender")[0];
-				var newPath = splitPath + 'zender' + nextNumber.toString() + '.html'
-				var newURL = window.location.hostname + window.location.pathname;
-				window.location.href = newPath
-				console.log(newPath)
-			} else {
-				var splitPath = window.location.pathname.split("zender")[0];
-				var newPath = splitPath + 'zender7.html';
-				window.location.href = newPath
+			if(window.location.href.substr(window.location.href.length - 10) == 'index.html' || window.location.href.substr(window.location.href.length - 1) == '/'){
+			}
+			else {
+				var currenturl = window.location.href;
+				var currentHTMLPage = currenturl.substr(currenturl.length - 6);
+				var number = Number(currentHTMLPage.substr(0,1));
+				var nextNumber = number - 1;
+				if (nextNumber > 0){
+					var splitPath = window.location.pathname.split("zender")[0];
+					var newPath = splitPath + 'zender' + nextNumber.toString() + '.html'
+					var newURL = window.location.hostname + window.location.pathname;
+					window.location.href = newPath
+					console.log(newPath)
+				} else {
+					var splitPath = window.location.pathname.split("zender")[0];
+					var newPath = splitPath + 'zender7.html';
+					window.location.href = newPath
+				}
 			}
 		}
 		if(keyval(e.keyCode).substr(0,2) == 83){ //s
@@ -189,6 +197,7 @@ function keymesg(w,e){
 				}
 			}
  		}
+		//76 = L
 		if(keyval(e.keyCode).substr(0,2) == 0){ //pijl omlaag/omhoog/opzij/naarboven
 			if(window.location.href.substr(window.location.href.length - 10) == 'index.html' || window.location.href.substr(window.location.href.length - 1) == '/'){
 				var main = document.querySelector('main');

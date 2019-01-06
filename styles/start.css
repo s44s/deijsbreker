@@ -655,6 +655,7 @@ video {
 	margin-top: 15vh;
 	display: flex;
 	flex-wrap: wrap;
+	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
 }
@@ -673,5 +674,5 @@ video {
 
 .overview img {
 	opacity: 0.5;
-	width: 15vw;
+	width: 18vw;
 }
