@@ -244,6 +244,13 @@ main .slick-arrow {
 	animation: fade-out-play 1s forwards;
 }
 
+@media only screen and (min-width: 1050px) {
+  .remote {
+  	top: 20vw !important;
+  }
+}
+
+
 @keyframes fade-out {
   from {opacity: 1;}
   to {opacity: 0;}
